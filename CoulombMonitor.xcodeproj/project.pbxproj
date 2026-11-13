@@ -1,0 +1,572 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		DD876299309497A600D26E7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD876283309497A500D26E7C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD87628A309497A500D26E7C;
+			remoteInfo = CoulombMonitor;
+		};
+		DD8762A3309497A600D26E7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD876283309497A500D26E7C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD87628A309497A500D26E7C;
+			remoteInfo = CoulombMonitor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DD87628B309497A500D26E7C /* CoulombMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoulombMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD876298309497A600D26E7C /* CoulombMonitorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoulombMonitorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD8762A2309497A600D26E7C /* CoulombMonitorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoulombMonitorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		DD8765553094995500D26E7C /* Exceptions for "CoulombMonitor" folder in "CoulombMonitor" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = DD87628A309497A500D26E7C /* CoulombMonitor */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		DD87628D309497A500D26E7C /* CoulombMonitor */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				DD8765553094995500D26E7C /* Exceptions for "CoulombMonitor" folder in "CoulombMonitor" target */,
+			);
+			path = CoulombMonitor;
+			sourceTree = "<group>";
+		};
+		DD87629B309497A600D26E7C /* CoulombMonitorTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CoulombMonitorTests;
+			sourceTree = "<group>";
+		};
+		DD8762A5309497A600D26E7C /* CoulombMonitorUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CoulombMonitorUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DD876288309497A500D26E7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		DD876295309497A600D26E7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		DD87629F309497A600D26E7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DD876282309497A500D26E7C = {
+			isa = PBXGroup;
+			children = (
+				DD87628D309497A500D26E7C /* CoulombMonitor */,
+				DD87629B309497A600D26E7C /* CoulombMonitorTests */,
+				DD8762A5309497A600D26E7C /* CoulombMonitorUITests */,
+				DD87628C309497A500D26E7C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DD87628C309497A500D26E7C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD87628B309497A500D26E7C /* CoulombMonitor.app */,
+				DD876298309497A600D26E7C /* CoulombMonitorTests.xctest */,
+				DD8762A2309497A600D26E7C /* CoulombMonitorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DD87628A309497A500D26E7C /* CoulombMonitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD8762AA309497A600D26E7C /* Build configuration list for PBXNativeTarget "CoulombMonitor" */;
+			buildPhases = (
+				DD876287309497A500D26E7C /* Sources */,
+				DD876288309497A500D26E7C /* Frameworks */,
+				DD876289309497A500D26E7C /* Resources */,
+			);
+			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				DD87628D309497A500D26E7C /* CoulombMonitor */,
+			);
+			name = CoulombMonitor;
+			productName = CoulombMonitor;
+			productReference = DD87628B309497A500D26E7C /* CoulombMonitor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DD876297309497A600D26E7C /* CoulombMonitorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD8762AD309497A600D26E7C /* Build configuration list for PBXNativeTarget "CoulombMonitorTests" */;
+			buildPhases = (
+				DD876294309497A600D26E7C /* Sources */,
+				DD876295309497A600D26E7C /* Frameworks */,
+				DD876296309497A600D26E7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD87629A309497A600D26E7C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DD87629B309497A600D26E7C /* CoulombMonitorTests */,
+			);
+			name = CoulombMonitorTests;
+			productName = CoulombMonitorTests;
+			productReference = DD876298309497A600D26E7C /* CoulombMonitorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DD8762A1309497A600D26E7C /* CoulombMonitorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD8762B0309497A600D26E7C /* Build configuration list for PBXNativeTarget "CoulombMonitorUITests" */;
+			buildPhases = (
+				DD87629E309497A600D26E7C /* Sources */,
+				DD87629F309497A600D26E7C /* Frameworks */,
+				DD8762A0309497A600D26E7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD8762A4309497A600D26E7C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DD8762A5309497A600D26E7C /* CoulombMonitorUITests */,
+			);
+			name = CoulombMonitorUITests;
+			productName = CoulombMonitorUITests;
+			productReference = DD8762A2309497A600D26E7C /* CoulombMonitorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DD876283309497A500D26E7C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					DD87628A309497A500D26E7C = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					DD876297309497A600D26E7C = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = DD87628A309497A500D26E7C;
+					};
+					DD8762A1309497A600D26E7C = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = DD87628A309497A500D26E7C;
+					};
+				};
+			};
+			buildConfigurationList = DD876286309497A500D26E7C /* Build configuration list for PBXProject "CoulombMonitor" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DD876282309497A500D26E7C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = DD87628C309497A500D26E7C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DD87628A309497A500D26E7C /* CoulombMonitor */,
+				DD876297309497A600D26E7C /* CoulombMonitorTests */,
+				DD8762A1309497A600D26E7C /* CoulombMonitorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DD876289309497A500D26E7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		DD876296309497A600D26E7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		DD8762A0309497A600D26E7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DD876287309497A500D26E7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		DD876294309497A600D26E7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		DD87629E309497A600D26E7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DD87629A309497A600D26E7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD87628A309497A500D26E7C /* CoulombMonitor */;
+			targetProxy = DD876299309497A600D26E7C /* PBXContainerItemProxy */;
+		};
+		DD8762A4309497A600D26E7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD87628A309497A500D26E7C /* CoulombMonitor */;
+			targetProxy = DD8762A3309497A600D26E7C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		DD8762A8309497A600D26E7C /* Debug configuration for PBXProject "CoulombMonitor" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DD8762A9309497A600D26E7C /* Release configuration for PBXProject "CoulombMonitor" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		DD8762AB309497A600D26E7C /* Debug configuration for PBXNativeTarget "CoulombMonitor" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CoulombMonitor/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Coulomb Monitor";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.rd753.CoulombMonitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DD8762AC309497A600D26E7C /* Release configuration for PBXNativeTarget "CoulombMonitor" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CoulombMonitor/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Coulomb Monitor";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.rd753.CoulombMonitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		DD8762AE309497A600D26E7C /* Debug configuration for PBXNativeTarget "CoulombMonitorTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.jq3xgz.CoulombMonitorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoulombMonitor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CoulombMonitor";
+			};
+			name = Debug;
+		};
+		DD8762AF309497A600D26E7C /* Release configuration for PBXNativeTarget "CoulombMonitorTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.jq3xgz.CoulombMonitorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoulombMonitor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CoulombMonitor";
+			};
+			name = Release;
+		};
+		DD8762B1309497A600D26E7C /* Debug configuration for PBXNativeTarget "CoulombMonitorUITests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.rd753.CoulombMonitorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = CoulombMonitor;
+			};
+			name = Debug;
+		};
+		DD8762B2309497A600D26E7C /* Release configuration for PBXNativeTarget "CoulombMonitorUITests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.rd753.CoulombMonitorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = CoulombMonitor;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DD876286309497A500D26E7C /* Build configuration list for PBXProject "CoulombMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD8762A8309497A600D26E7C /* Debug configuration for PBXProject "CoulombMonitor" */,
+				DD8762A9309497A600D26E7C /* Release configuration for PBXProject "CoulombMonitor" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		DD8762AA309497A600D26E7C /* Build configuration list for PBXNativeTarget "CoulombMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD8762AB309497A600D26E7C /* Debug configuration for PBXNativeTarget "CoulombMonitor" */,
+				DD8762AC309497A600D26E7C /* Release configuration for PBXNativeTarget "CoulombMonitor" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		DD8762AD309497A600D26E7C /* Build configuration list for PBXNativeTarget "CoulombMonitorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD8762AE309497A600D26E7C /* Debug configuration for PBXNativeTarget "CoulombMonitorTests" */,
+				DD8762AF309497A600D26E7C /* Release configuration for PBXNativeTarget "CoulombMonitorTests" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		DD8762B0309497A600D26E7C /* Build configuration list for PBXNativeTarget "CoulombMonitorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD8762B1309497A600D26E7C /* Debug configuration for PBXNativeTarget "CoulombMonitorUITests" */,
+				DD8762B2309497A600D26E7C /* Release configuration for PBXNativeTarget "CoulombMonitorUITests" */,
+			);
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DD876283309497A500D26E7C /* Project object */;
+	validationLevel = 1;
+}

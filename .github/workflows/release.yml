@@ -1,0 +1,64 @@
+name: Release Build
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build & Package DMG
+    runs-on: macos-26
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Build macOS App
+        run: |
+          xcodebuild clean build \
+            -project CoulombMonitor.xcodeproj \
+            -scheme CoulombMonitor \
+            -configuration Release \
+            -derivedDataPath ./build \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=YES
+
+      - name: Create DMG
+        run: |
+          APP_PATH="./build/Build/Products/Release/CoulombMonitor.app"
+          DMG_STAGING="./dmg_staging"
+          VERSION="${GITHUB_REF_NAME:-latest}"
+          DMG_NAME="CoulombMonitor-${VERSION}.dmg"
+
+          # アドホック署名（Apple Silicon対応）
+          codesign --force --deep --sign - "${APP_PATH}"
+
+          mkdir -p "${DMG_STAGING}"
+          cp -R "${APP_PATH}" "${DMG_STAGING}/"
+
+          # アプリケーションフォルダへのリンクを作成（ドラッグ＆ドロップインストール用）
+          ln -s /Applications "${DMG_STAGING}/Applications"
+
+          # macOS標準のhdiutilで圧縮DMGを作成
+          hdiutil create \
+            -volname "CoulombMonitor" \
+            -srcfolder "${DMG_STAGING}" \
+            -ov \
+            -format UDZO \
+            "${DMG_NAME}"
+
+          echo "DMG_NAME=${DMG_NAME}" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            ${{ env.DMG_NAME }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
