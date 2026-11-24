@@ -101,4 +101,108 @@ struct CoulombMonitorTests {
         let titleView = MenuBarTitleView(info: info, settings: settings)
         #expect(titleView.titleText == "75%  12.5W")
     }
+    
+    @Test func testEnergyFlowChargingMode() async throws {
+        let info = BatteryInfo(
+            percentage: 25,
+            isCharging: true,
+            isPluggedIn: true,
+            batteryAmperageMilliAmps: 6523,
+            batteryPowerWatts: 77.61,
+            hasExternalPower: true,
+            adapterWatts: 100,
+            adapterPowerWatts: 86.29,
+            systemLoadWatts: 8.66
+        )
+        let flow = info.energyFlow
+        #expect(flow.mode == .charging)
+        #expect(flow.externalTotalWatts == 86.29)
+        #expect(flow.externalToBatteryWatts == 77.61)
+        #expect(flow.externalToSystemWatts == 8.66)
+        #expect(flow.batteryToSystemWatts == 0.0)
+        #expect(flow.systemTotalWatts == 8.66)
+        #expect(flow.batteryNetWatts == 77.61)
+    }
+    
+    @Test func testEnergyFlowBatteryAssistMode() async throws {
+        let info = BatteryInfo(
+            percentage: 62,
+            isCharging: false,
+            isPluggedIn: true,
+            batteryAmperageMilliAmps: -1611,
+            batteryPowerWatts: 18.40,
+            hasExternalPower: true,
+            adapterWatts: 100,
+            adapterPowerWatts: 96.60,
+            systemLoadWatts: 115.00
+        )
+        let flow = info.energyFlow
+        #expect(flow.mode == .batteryAssist)
+        #expect(flow.externalTotalWatts == 96.60)
+        #expect(flow.externalToBatteryWatts == 0.0)
+        #expect(flow.externalToSystemWatts == 96.60)
+        #expect(flow.batteryToSystemWatts == 18.40)
+        #expect(flow.systemTotalWatts == 115.00)
+        #expect(flow.batteryNetWatts == -18.40)
+    }
+    
+    @Test func testEnergyFlowOnBatteryMode() async throws {
+        let info = BatteryInfo(
+            percentage: 78,
+            isCharging: false,
+            isPluggedIn: false,
+            batteryAmperageMilliAmps: -1584,
+            batteryPowerWatts: 18.50,
+            hasExternalPower: false,
+            systemLoadWatts: 18.50
+        )
+        let flow = info.energyFlow
+        #expect(flow.mode == .onBattery)
+        #expect(flow.externalTotalWatts == 0.0)
+        #expect(flow.externalToBatteryWatts == 0.0)
+        #expect(flow.externalToSystemWatts == 0.0)
+        #expect(flow.batteryToSystemWatts == 18.50)
+        #expect(flow.systemTotalWatts == 18.50)
+        #expect(flow.batteryNetWatts == -18.50)
+    }
+    
+    @Test func testEnergyFlowBypassMode() async throws {
+        let info = BatteryInfo(
+            percentage: 100,
+            isCharging: false,
+            isPluggedIn: true,
+            isFullyCharged: true,
+            batteryAmperageMilliAmps: 0,
+            batteryPowerWatts: 0,
+            hasExternalPower: true,
+            adapterWatts: 100,
+            adapterPowerWatts: 15.20,
+            systemLoadWatts: 15.20
+        )
+        let flow = info.energyFlow
+        #expect(flow.mode == .bypass)
+        #expect(flow.externalTotalWatts == 15.20)
+        #expect(flow.externalToBatteryWatts == 0.0)
+        #expect(flow.externalToSystemWatts == 15.20)
+        #expect(flow.batteryToSystemWatts == 0.0)
+        #expect(flow.systemTotalWatts == 15.20)
+        #expect(flow.batteryNetWatts == 0.0)
+    }
+    
+    @Test func testParseTemperatureCelsius() async throws {
+        #expect(BatteryMonitor.parseTemperatureCelsius(3359) == 33.59)
+        #expect(BatteryMonitor.parseTemperatureCelsius(2950) == 29.50)
+        #expect(BatteryMonitor.parseTemperatureCelsius(335) == 33.5)
+        #expect(BatteryMonitor.parseTemperatureCelsius(0) == nil)
+    }
+    
+    @Test @MainActor func testBatteryMonitorReadsTemperatureWhenBatteryPresent() async throws {
+        let monitor = BatteryMonitor(updateInterval: 60.0)
+        if monitor.isAvailable && monitor.info.batteryVoltageVolts > 0 {
+            #expect(monitor.info.temperatureCelsius != nil)
+            if let temp = monitor.info.temperatureCelsius {
+                #expect(temp > 0 && temp < 100)
+            }
+        }
+    }
 }

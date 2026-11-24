@@ -140,22 +140,17 @@ final class BatteryMonitor {
         
         if systemLoadWatts == 0.0 {
             if hasExternalPower {
-                // System load is adapter power minus charging power
-                systemLoadWatts = max(0.0, adapterPowerWatts - (isCharging ? batteryPowerWatts : 0.0))
+                // System load is adapter power minus charging power, or plus discharging assist power
+                let signedBatteryWatts = batteryAmperageVal >= 0 ? batteryPowerWatts : -batteryPowerWatts
+                systemLoadWatts = max(0.0, adapterPowerWatts - signedBatteryWatts)
             } else {
                 systemLoadWatts = batteryPowerWatts
             }
         }
         
         // MARK: 5. Battery Diagnostics (温度・健全度・残り時間)
-        var temperatureCelsius: Double? = nil
-        if let rawTemp = (properties["Temperature"] as? NSNumber)?.doubleValue {
-            if rawTemp > 1000 {
-                temperatureCelsius = rawTemp / 100.0
-            } else if rawTemp > 200 {
-                temperatureCelsius = (rawTemp / 10.0) - 273.15
-            }
-        }
+        let temperatureCelsius = extractTemperatureCelsius(from: properties)
+            ?? fetchTemperatureFromChildren(of: service)
         
         var healthPercentage: Double? = nil
         let rawMax = (batteryData?["AppleRawMaxCapacity"] as? Int) ?? (batteryData?["FullChargeCapacity"] as? Int)
@@ -197,6 +192,48 @@ final class BatteryMonitor {
             adapterPowerWatts: adapterPowerWatts,
             systemLoadWatts: systemLoadWatts
         )
+    }
+    
+    private func fetchTemperatureFromChildren(of parent: io_registry_entry_t) -> Double? {
+        var childIterator: io_iterator_t = 0
+        guard IORegistryEntryGetChildIterator(parent, kIOServicePlane, &childIterator) == kIOReturnSuccess else {
+            return nil
+        }
+        defer { IOObjectRelease(childIterator) }
+        
+        while case let child = IOIteratorNext(childIterator), child != 0 {
+            defer { IOObjectRelease(child) }
+            var propsUnmanaged: Unmanaged<CFMutableDictionary>?
+            guard IORegistryEntryCreateCFProperties(child, &propsUnmanaged, kCFAllocatorDefault, 0) == kIOReturnSuccess,
+                  let childProps = propsUnmanaged?.takeRetainedValue() as? [String: Any] else {
+                continue
+            }
+            if let temp = extractTemperatureCelsius(from: childProps) {
+                return temp
+            }
+        }
+        return nil
+    }
+    
+    private func extractTemperatureCelsius(from properties: [String: Any]) -> Double? {
+        let batteryData = properties["BatteryData"] as? [String: Any]
+        let rawTemp = (properties["Temperature"] as? NSNumber)?.doubleValue
+            ?? (batteryData?["Temperature"] as? NSNumber)?.doubleValue
+            ?? (batteryData?["VirtualTemperature"] as? NSNumber)?.doubleValue
+        
+        guard let rawTemp else { return nil }
+        return Self.parseTemperatureCelsius(rawTemp)
+    }
+    
+    nonisolated static func parseTemperatureCelsius(_ rawTemp: Double) -> Double? {
+        guard rawTemp > 0 else { return nil }
+        if rawTemp >= 500 {
+            return rawTemp / 100.0
+        } else if rawTemp > 100 {
+            return rawTemp / 10.0
+        } else {
+            return rawTemp
+        }
     }
     
     // MARK: - IOPowerSources Fallback
