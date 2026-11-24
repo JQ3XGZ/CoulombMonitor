@@ -62,4 +62,77 @@ nonisolated struct BatteryInfo: Sendable, Equatable {
             return "\(remainingMinutes)分"
         }
     }
+    
+    // MARK: - Energy Flow Snapshot
+    
+    var energyFlow: EnergyFlowSnapshot {
+        EnergyFlowSnapshot(info: self)
+    }
+}
+
+nonisolated enum EnergyFlowMode: Sendable, Equatable {
+    case charging
+    case batteryAssist
+    case onBattery
+    case bypass
+}
+
+nonisolated struct EnergyFlowSnapshot: Sendable, Equatable {
+    let mode: EnergyFlowMode
+    let externalTotalWatts: Double
+    let externalToBatteryWatts: Double
+    let externalToSystemWatts: Double
+    let batteryToSystemWatts: Double
+    let systemTotalWatts: Double
+    let batteryNetWatts: Double
+    
+    init(info: BatteryInfo) {
+        if !info.hasExternalPower {
+            self.mode = .onBattery
+            let dischargeWatts = info.batteryPowerWatts > 0 ? info.batteryPowerWatts : info.systemLoadWatts
+            self.externalTotalWatts = 0.0
+            self.externalToBatteryWatts = 0.0
+            self.externalToSystemWatts = 0.0
+            self.batteryToSystemWatts = dischargeWatts
+            self.systemTotalWatts = info.systemLoadWatts > 0 ? info.systemLoadWatts : dischargeWatts
+            self.batteryNetWatts = -dischargeWatts
+        } else if info.isCharging || info.batteryAmperageMilliAmps > 50 {
+            self.mode = .charging
+            let chargeWatts = info.batteryPowerWatts
+            let totalExternal = info.adapterPowerWatts > 0
+                ? info.adapterPowerWatts
+                : (chargeWatts + info.systemLoadWatts)
+            let sysWatts = info.systemLoadWatts > 0
+                ? info.systemLoadWatts
+                : max(0.0, totalExternal - chargeWatts)
+            self.externalTotalWatts = totalExternal
+            self.externalToBatteryWatts = chargeWatts
+            self.externalToSystemWatts = sysWatts
+            self.batteryToSystemWatts = 0.0
+            self.systemTotalWatts = sysWatts
+            self.batteryNetWatts = chargeWatts
+        } else if info.batteryAmperageMilliAmps < -50 && info.batteryPowerWatts >= 0.5 {
+            self.mode = .batteryAssist
+            let assistWatts = info.batteryPowerWatts
+            let extWatts = info.adapterPowerWatts
+            self.externalTotalWatts = extWatts
+            self.externalToBatteryWatts = 0.0
+            self.externalToSystemWatts = extWatts
+            self.batteryToSystemWatts = assistWatts
+            self.systemTotalWatts = info.systemLoadWatts > 0
+                ? info.systemLoadWatts
+                : (extWatts + assistWatts)
+            self.batteryNetWatts = -assistWatts
+        } else {
+            self.mode = .bypass
+            let extWatts = info.adapterPowerWatts
+            let sysWatts = info.systemLoadWatts > 0 ? info.systemLoadWatts : extWatts
+            self.externalTotalWatts = extWatts
+            self.externalToBatteryWatts = 0.0
+            self.externalToSystemWatts = sysWatts
+            self.batteryToSystemWatts = 0.0
+            self.systemTotalWatts = sysWatts
+            self.batteryNetWatts = 0.0
+        }
+    }
 }
