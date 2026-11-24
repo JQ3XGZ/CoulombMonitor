@@ -1,0 +1,48 @@
+#!/bin/sh
+set -eu
+
+REPO_ROOT=$(git rev-parse --show-toplevel)
+cd "$REPO_ROOT"
+
+PBXPROJ="CoulombMonitor.xcodeproj/project.pbxproj"
+EXPECTED_VERSION="77"
+
+# Check if project.pbxproj is staged (Added, Copied, or Modified)
+if ! git diff --cached --name-only --diff-filter=ACM | grep -qx "$PBXPROJ"; then
+    exit 0
+fi
+
+STAGED_VERSION=$(git show ":$PBXPROJ" | sed -n 's/^[[:space:]]*objectVersion = \([0-9][0-9]*\);/\1/p' | head -n 1)
+
+if [ -z "$STAGED_VERSION" ] || [ "$STAGED_VERSION" = "$EXPECTED_VERSION" ]; then
+    exit 0
+fi
+
+# Abort if project.pbxproj also has unstaged changes so we don't clobber partial staging
+if ! git diff --quiet -- "$PBXPROJ"; then
+    echo "error: $PBXPROJ has staged objectVersion=$STAGED_VERSION (expected $EXPECTED_VERSION) and also has unstaged changes." >&2
+    echo "Please revert objectVersion to $EXPECTED_VERSION manually or stage all changes before committing." >&2
+    exit 1
+fi
+
+# Revert objectVersion back to expected value in working tree and re-stage
+python3 -c '
+import re, sys
+path, expected = sys.argv[1], sys.argv[2]
+with open(path, "r", encoding="utf-8") as f:
+    content = f.read()
+updated, count = re.subn(
+    r"^([ \t]*objectVersion = )[0-9]+(;)$",
+    rf"\g<1>{expected}\g<2>",
+    content,
+    count=1,
+    flags=re.MULTILINE,
+)
+if count != 1:
+    sys.exit(f"Failed to update objectVersion in {path}")
+with open(path, "w", encoding="utf-8") as f:
+    f.write(updated)
+' "$PBXPROJ" "$EXPECTED_VERSION"
+
+git add "$PBXPROJ"
+echo "[pre-commit] Reverted $PBXPROJ objectVersion ($STAGED_VERSION -> $EXPECTED_VERSION) and re-staged."
